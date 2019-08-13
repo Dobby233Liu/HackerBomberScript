@@ -1,5 +1,7 @@
 image: Visual Studio 2017
 version: 0.1-appveyor-{build}({branch})
+before_build:
+  - dir
 configuration: Debug
 build:
   verbosity: minimal
