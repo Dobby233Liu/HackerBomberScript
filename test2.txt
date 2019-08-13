@@ -1,0 +1,28 @@
+输出 "测试功能。"
+插入 "http://aiqipaiapp33.cn/2017.php"
+设为 提交URL
+插入 "invaild"
+设为 提交方法
+插入 "POST"
+设为 提交方法
+插入 "u="
+生成 QQ
+插入 "&p="
+生成 密码
+编码为 URL
+插入 "&ts="
+生成 时间戳
+编码为 BASE64
+编码为 URL
+解码为 URL
+交换
+交换
+插入 "&tijiao=%E6%8F%90%CD%8F%CD%8F%CD%8F%CD%8F%E4%BA%A4"
+删除 "&tijiao=%E6%8F%90%CD%8F%CD%8F%CD%8F%CD%8F%E4%BA%A4"
+插入 "&tijiao=%E6%8F%90%CD%8F%CD%8F%CD%8F%CD%8F%E4%BA%A4"
+插入 "&nmsl=1&test=3&1145141919810=hdjhvjcbnvjknvkd[qq]"
+合并
+
+设为 提交内容
+
+输出 "合成完成，程序结束。"
