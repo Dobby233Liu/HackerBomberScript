@@ -7,3 +7,12 @@ configuration: Debug
 build:
   project: HackerBomberScript.sln
   verbosity: minimal
+after_build: # copy files and pack
+  - md C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\ScriptInterpreter\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\HackerBomberScriptor\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\BomberStudio\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
+  - 7z a -tzip final.zip .\binraries\*
+artifacts:
+  path: final.zip
+  name: Everything here
