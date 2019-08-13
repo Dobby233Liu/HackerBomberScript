@@ -2,7 +2,8 @@ image: Visual Studio 2017
 version: 0.1-appveyor-{build}({branch})
 before_build:
   - dir
+  - ren 盗号骗子轰炸脚本.sln HackerBomberScript.sln
 configuration: Debug
 build:
-  project: ????????.sln # handle utf-8
+  project: HackerBomberScript.sln
   verbosity: minimal
