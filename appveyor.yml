@@ -17,6 +17,8 @@ after_build: # copy files and pack
   - copy C:\projects\hackerbomberscript\BomberStudio\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\HackerBomber\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\MobileBomber\bin\Release\*.* C:\projects\hackerbomberscript\binaries
+  - del /q C:\projects\hackerbomberscript\binaries\*.pdb
+  - del /q C:\projects\hackerbomberscript\binaries\*.config
   - 7z a -tzip final.zip .\binaries\*
 artifacts:
   - path: final.zip
