@@ -3,6 +3,7 @@ version: 0.1-appveyor-{build}({branch})
 before_build:
   - dir
   - ren ????????.sln HackerBomberScript.sln
+  - nuget restore
 configuration: Debug
 build:
   project: HackerBomberScript.sln
