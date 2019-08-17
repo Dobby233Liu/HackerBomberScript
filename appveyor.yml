@@ -9,6 +9,7 @@ build:
   project: HackerBomberScript.sln
   verbosity: minimal
 after_build: # copy files and pack
+  - msbuild /t:SignAndroidPackage C:\projects\hackerbomberscript\MobileBomber\MobileBomber.csproj
   - md C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\ScriptInterpreter\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\HackerBomberApplication\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
