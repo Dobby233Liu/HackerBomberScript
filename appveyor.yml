@@ -10,9 +10,11 @@ build:
 after_build: # copy files and pack
   - md C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\ScriptInterpreter\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
-  - copy C:\projects\hackerbomberscript\HackerBomberScriptor\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\HackerBomberApplication\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\HackerBomberCrossPlatform\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\BomberStudio\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\HackerBomber\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\MobileBomber\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
   - 7z a -tzip final.zip .\binaries\*
 artifacts:
   path: final.zip
