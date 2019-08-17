@@ -19,5 +19,9 @@ after_build: # copy files and pack
   - copy C:\projects\hackerbomberscript\MobileBomber\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
   - 7z a -tzip final.zip .\binaries\*
 artifacts:
-  path: final.zip
-  name: Everything here
+  - path: final.zip
+    name: Everything here
+  - path: MobileBomber\bin\Debug\com.companyname.mobilebomber-Signed.apk
+    name: MobileBomber
+  - path: ScriptInterpreter\bin\Debug\ScriptInterpreter.dll
+    name: ScriptInterpreter
