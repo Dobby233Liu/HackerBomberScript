@@ -11,17 +11,17 @@ build:
 after_build: # copy files and pack
   - msbuild /t:SignAndroidPackage /p:Configuration=Release C:\projects\hackerbomberscript\MobileBomber\MobileBomber.csproj
   - md C:\projects\hackerbomberscript\binaries
-  - copy C:\projects\hackerbomberscript\ScriptInterpreter\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
-  - copy C:\projects\hackerbomberscript\HackerBomberApplication\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
-# - copy C:\projects\hackerbomberscript\HackerBomberCrossPlatform\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
-  - copy C:\projects\hackerbomberscript\BomberStudio\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
-  - copy C:\projects\hackerbomberscript\HackerBomber\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
-  - copy C:\projects\hackerbomberscript\MobileBomber\bin\Debug\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\ScriptInterpreter\bin\Release\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\HackerBomberApplication\bin\Release\*.* C:\projects\hackerbomberscript\binaries
+# - copy C:\projects\hackerbomberscript\HackerBomberCrossPlatform\bin\Release\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\BomberStudio\bin\Release\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\HackerBomber\bin\Release\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\MobileBomber\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - 7z a -tzip final.zip .\binaries\*
 artifacts:
   - path: final.zip
     name: Everything here
-  - path: MobileBomber\bin\Debug\com.companyname.mobilebomber-Signed.apk
+  - path: MobileBomber\bin\Release\com.companyname.mobilebomber-Signed.apk
     name: MobileBomber
-  - path: ScriptInterpreter\bin\Debug\ScriptInterpreter.dll
+  - path: ScriptInterpreter\bin\Release\ScriptInterpreter.dll
     name: ScriptInterpreter
