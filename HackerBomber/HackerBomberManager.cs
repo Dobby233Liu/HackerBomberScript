@@ -36,7 +36,7 @@ namespace 专治骗子
             while (BomberThreads.Count < mThreadCount)
             {
                 Thread t = new Thread(run);
-                Thread.Sleep(100);
+                Thread.Sleep(1);
                 BomberThreads.Add(t);
                 t.Start();
             }
@@ -127,52 +127,35 @@ namespace 专治骗子
         }
         public static string GetHttpResponse(HttpWebRequest req) {
             string result = "";
-            HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
-            Stream stream = resp.GetResponseStream();
-            using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+            try
             {
-                result = reader.ReadToEnd();
+                HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+                Stream stream = resp.GetResponseStream();
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    result = reader.ReadToEnd();
+                }
+                try
+                {
+                    //resp.Close();
+                }
+                catch { }
+                return "[" + resp.StatusCode.ToString() + "] " + result;
             }
-            return "["+resp.StatusCode.ToString()+"] " + result;
-        }
-        public static string GenerateRandomSequence(string charpool, int minlen, int maxlen)
-        {
-            StringBuilder sb = new StringBuilder();
-            Random rnd = new Random();
-            int len = minlen + (rnd.Next() % (maxlen - minlen + 1));
-            for (int i = 0; i < len; i++)
-            {
-                sb.Append(charpool[rnd.Next() % charpool.Length]);
-            }
-            return sb.ToString();
-        }
-        public static string RandomQQNumber() {
-            return GenerateRandomSequence("1234567890", 7, 10);
-        }
-        public static string RandomPassword() {
-            return GenerateRandomSequence("1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM！@#￥%……&*()_+-=[];',./<>?:\"{}\\`~", 6, 12);
-        }
-        public static string Base64Encode(string input) {
-            return Base64Encode(input, Encoding.Default);
-        }
-        public static string Base64Encode(string input, Encoding encoding) {
-            return Convert.ToBase64String(encoding.GetBytes(input));
-        }
-        private static object syncobj = new object();
-        public static void PrintResult(string user, string pass, string result)
-        {
-            lock (syncobj)
-            {
-                Console.WriteLine("USER=" + user);
-                Console.WriteLine("PASS=" + pass);
-                Console.WriteLine("Result: " + result);
-                Console.WriteLine("-------------------------------------------");
+            catch (WebException ex) {
+                if (null == ex.Response) {
+                    throw ex;
+                }
+                if ((int)((HttpWebResponse)ex.Response).StatusCode < 400)
+                {
+                    return ex.Message;
+                }
+                throw ex;
             }
         }
-        public static void startColorfulEffect()
-        {
-
-        }
+        
+        
+        
     }
     public class HttpRequestCreatedEventArgs : EventArgs
     {
