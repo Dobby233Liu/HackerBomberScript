@@ -67,8 +67,13 @@ namespace BomberStudio
                 script="#开启RGB\r\n" + script;
             }
             script = "#线程数 "+numThreadCount.Value+"\r\n" + script;
-
-			if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
+			if (cmbType.SelectedIndex == 2)
+			{
+				script = "#复制这段内容，粘贴到安卓轰炸机里，即可开始轰炸\r\n" + script;
+				new FrmDisplayText(script).Show();
+				Close();
+			
+			} else if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
 				string root = folderBrowserDialog1.SelectedPath;
 				root = Path.Combine(root, "轰炸机");
 				if (!File.Exists(root)) {
@@ -109,12 +114,6 @@ namespace BomberStudio
 					File.WriteAllText(Path.Combine(root, "script.hbs"), script);
 					File.WriteAllText(Path.Combine(root, "开启轰炸机.sh"), "mono HackerBomberCrossPlatform.dll");
 					Process.Start("explorer", "\"" + root + "\"");
-				}
-
-				if (cmbType.SelectedIndex == 2)
-				{
-					script = "#复制这段内容，粘贴到安卓轰炸机里，即可开始轰炸\r\n" + script;
-					new FrmDisplayText(script).Show();
 				}
 				
 				Close();
