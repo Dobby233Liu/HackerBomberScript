@@ -74,6 +74,15 @@ namespace BomberStudio
                     string root = folderBrowserDialog1.SelectedPath;
                     root = Path.Combine(root, "轰炸机");
                     // CopyDirectory("template\\windows", root, true);
+					/** files
+						HackerBomber.dll
+						ScriptInterpreter.dll
+						HackerBomberApplication.exe -> 轰炸机.exe
+						gonna copy to root.
+					**/
+					File.Copy("HackerBomber.dll", Path.Combine(root, "HackerBomber.dll"));
+					File.Copy("ScriptInterpreter.dll", Path.Combine(root, "ScriptInterpreter.dll"));
+					File.Copy("HackerBomberApplication.exe", Path.Combine(root, "轰炸机.exe"));
                     File.WriteAllText(Path.Combine(root, "script.hbs"), script);
                     Process.Start("explorer", "\""+root+"\"");
                     Close();
@@ -87,7 +96,17 @@ namespace BomberStudio
                     string root = folderBrowserDialog1.SelectedPath;
                     root = Path.Combine(root, "轰炸机");
                     // CopyDirectory("template\\linux", root, true);
+					/** files
+						HackerBomber.dll
+						ScriptInterpreter.dll
+						HackerBomberCrossPlatform.dll
+						gonna copy to root.
+					**/
+					File.Copy("HackerBomber.dll", Path.Combine(root, "HackerBomber.dll"));
+					File.Copy("ScriptInterpreter.dll", Path.Combine(root, "ScriptInterpreter.dll"));
+					File.Copy("HackerBomberCrossPlatform.dll", Path.Combine(root, "HackerBomberCrossPlatform.dll"));
                     File.WriteAllText(Path.Combine(root, "script.hbs"), script);
+					File.WriteAllText(Path.Combine(root, "开启轰炸机.sh"), "mono HackerBomberCrossPlatform.dll");
                     Process.Start("explorer", "\"" + root + "\"");
                     Close();
                 }
