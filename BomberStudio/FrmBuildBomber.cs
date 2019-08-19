@@ -103,7 +103,7 @@ namespace BomberStudio
 						HackerBomberCrossPlatform.dll
 						gonna copy to root.
 					**/
-					File.Copy("HackerBomber.dll", Path.Combine(root, "HackerBomber.dll")), true);
+					File.Copy("HackerBomber.dll", Path.Combine(root, "HackerBomber.dll"), true);
 					File.Copy("ScriptInterpreter.dll", Path.Combine(root, "ScriptInterpreter.dll"), true);
 					File.Copy("HackerBomberCrossPlatform.dll", Path.Combine(root, "HackerBomberCrossPlatform.dll"), true);
 					File.WriteAllText(Path.Combine(root, "script.hbs"), script);
