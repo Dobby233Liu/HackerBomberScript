@@ -73,7 +73,7 @@ namespace BomberStudio
                 if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
                     string root = folderBrowserDialog1.SelectedPath;
                     root = Path.Combine(root, "轰炸机");
-                    CopyDirectory("template\\windows", root, true);
+                    // CopyDirectory("template\\windows", root, true);
                     File.WriteAllText(Path.Combine(root, "script.hbs"), script);
                     Process.Start("explorer", "\""+root+"\"");
                     Close();
@@ -86,7 +86,7 @@ namespace BomberStudio
                 {
                     string root = folderBrowserDialog1.SelectedPath;
                     root = Path.Combine(root, "轰炸机");
-                    CopyDirectory("template\\linux", root, true);
+                    // CopyDirectory("template\\linux", root, true);
                     File.WriteAllText(Path.Combine(root, "script.hbs"), script);
                     Process.Start("explorer", "\"" + root + "\"");
                     Close();
