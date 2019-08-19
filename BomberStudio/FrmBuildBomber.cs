@@ -92,7 +92,6 @@ namespace BomberStudio
 					File.Copy("HackerBomberApplication.exe", Path.Combine(root, "轰炸机.exe"), true);
 					File.WriteAllText(Path.Combine(root, "script.hbs"), script);
 					Process.Start("explorer", "\""+root+"\"");
-					Close();
 				}
 
 				if (cmbType.SelectedIndex == 1)
@@ -104,7 +103,7 @@ namespace BomberStudio
 						HackerBomberCrossPlatform.dll
 						gonna copy to root.
 					**/
-					File.Copy("HackerBomber.dll", Path.Combine(root, "HackerBomber.dll")), true;
+					File.Copy("HackerBomber.dll", Path.Combine(root, "HackerBomber.dll")), true);
 					File.Copy("ScriptInterpreter.dll", Path.Combine(root, "ScriptInterpreter.dll"), true);
 					File.Copy("HackerBomberCrossPlatform.dll", Path.Combine(root, "HackerBomberCrossPlatform.dll"), true);
 					File.WriteAllText(Path.Combine(root, "script.hbs"), script);
@@ -117,12 +116,10 @@ namespace BomberStudio
 					script = "#复制这段内容，粘贴到安卓轰炸机里，即可开始轰炸\r\n" + script;
 					new FrmDisplayText(script).Show();
 				}
+				
 				Close();
 			}
         }
-
-
-
 
         private static bool CopyDirectory(string SourcePath, string DestinationPath, bool overwriteexisting)
         {
