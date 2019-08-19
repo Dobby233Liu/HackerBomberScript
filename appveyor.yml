@@ -21,6 +21,8 @@ after_build: # copy files and pack
   - del /q C:\projects\hackerbomberscript\binaries\*.pdb
   - del /q C:\projects\hackerbomberscript\binaries\*.mdb
   - del /q C:\projects\hackerbomberscript\binaries\*.config
+  - del /q C:\projects\hackerbomberscript\binaries\com.companyname.mobilebomber.apk
+  - ren C:\projects\hackerbomberscript\binaries\com.companyname.mobilebomber-Signed.apk C:\projects\hackerbomberscript\binaries\com.companyname.mobilebomber.apk
   - 7z a -tzip final.zip .\binaries\*
 artifacts:
   - path: final.zip
