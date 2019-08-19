@@ -14,7 +14,7 @@ after_build: # copy files and pack
   - md C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\ScriptInterpreter\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\HackerBomberApplication\bin\Release\*.* C:\projects\hackerbomberscript\binaries
-  - copy C:\projects\hackerbomberscript\HackerBomberCrossPlatform\bin\Release\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\HackerBomberCrossPlatform\bin\Release\netcoreapp2.1\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\BomberStudio\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\HackerBomber\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\MobileBomber\bin\Release\*.* C:\projects\hackerbomberscript\binaries
