@@ -18,6 +18,7 @@ after_build: # build, copy files and pack
   - copy C:\projects\hackerbomberscript\BomberStudio\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\HackerBomber\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - copy C:\projects\hackerbomberscript\MobileBomber\bin\Release\*.* C:\projects\hackerbomberscript\binaries
+  - copy C:\projects\hackerbomberscript\HackerBomberGUI\bin\Release\*.* C:\projects\hackerbomberscript\binaries
   - del /q C:\projects\hackerbomberscript\binaries\*.pdb
   - del /q C:\projects\hackerbomberscript\binaries\*.mdb
   - del /q C:\projects\hackerbomberscript\binaries\*.config
