@@ -23,13 +23,16 @@ namespace BomberStudio
 
         private void FrmBuildBomber_Load(object sender, EventArgs e)
         {
-            cmbType.SelectedIndex = 0;
+            foreach (string path in Directory.EnumerateDirectories("template")) {
+                cmbType.Items.Add(Path.GetFileName(path));
+            }
+            try
+            {
+                cmbType.SelectedIndex = 0;
+            }
+            catch { }
         }
 
-        private void ValThreadCount_Scroll(object sender, EventArgs e)
-        {
-
-        }
 
         private void NumericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -63,62 +66,39 @@ namespace BomberStudio
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (chkUseRGB.Checked) {
-                script="#开启RGB\r\n" + script;
-            }
-            script = "#线程数 "+numThreadCount.Value+"\r\n" + script;
-			if (cmbType.SelectedIndex == 2)
-			{
-				script = "#复制这段内容，粘贴到安卓轰炸机里，即可开始轰炸\r\n" + script;
-				new FrmDisplayText(script).Show();
-				Close();
-			
-			} else if (folderBrowserDialog1.ShowDialog() == DialogResult.OK) {
-				string root = folderBrowserDialog1.SelectedPath;
-				root = Path.Combine(root, "轰炸机");
-				if (!Directory.Exists(root)) {
-					Directory.CreateDirectory(root);
-				} else {
-					DialogResult willContinue = MessageBox.Show("文件夹 " + root + " 已存在，覆盖吗？", this.Text, MessageBoxButtons.YesNo);
-					if (willContinue != DialogResult.Yes){
-						return;
-					}
-				}
-				if (cmbType.SelectedIndex == 0) {
-					// CopyDirectory("template\\windows", root, true);
-					/** files
-						HackerBomber.dll
-						ScriptInterpreter.dll
-						HackerBomberApplication.exe -> 轰炸机.exe
-						gonna copy to root.
-					**/
-					File.Copy("HackerBomber.dll", Path.Combine(root, "HackerBomber.dll"), true);
-					File.Copy("ScriptInterpreter.dll", Path.Combine(root, "ScriptInterpreter.dll"), true);
-					File.Copy("HackerBomberApplication.exe", Path.Combine(root, "轰炸机.exe"), true);
-					File.WriteAllText(Path.Combine(root, "script.hbs"), script);
-					Process.Start("explorer", "\""+root+"\"");
-				}
+            try
+            {
+                string root2 = "output";
 
-				if (cmbType.SelectedIndex == 1)
-				{
-					// CopyDirectory("template\\linux", root, true);
-					/** files
-						HackerBomber.dll
-						ScriptInterpreter.dll
-						HackerBomberCrossPlatform.dll
-						gonna copy to root.
-					**/
-					File.Copy("HackerBomber.dll", Path.Combine(root, "HackerBomber.dll"), true);
-					File.Copy("ScriptInterpreter.dll", Path.Combine(root, "ScriptInterpreter.dll"), true);
-					File.Copy("HackerBomberCrossPlatform.dll", Path.Combine(root, "HackerBomberCrossPlatform.dll"), true);
-					File.WriteAllText(Path.Combine(root, "script.hbs"), script);
-					File.WriteAllText(Path.Combine(root, "开启轰炸机.sh"), "mono HackerBomberCrossPlatform.dll");
-					Process.Start("explorer", "\"" + root + "\"");
-				}
-				
-				Close();
-			}
+                string root = root2;
+
+                root = Path.Combine(root, "轰炸机_"+DateTime.Now.ToString("yyyyMMdd\\_HHmmss"));
+
+                if (chkUseRGB.Checked)
+                {
+                    script = "#开启RGB\r\n" + script;
+                }
+
+                if (chkUseRGB.Checked)
+                {
+                    script = "#关闭回显\r\n" + script;
+                }
+
+                script = "#线程数 " + numThreadCount.Value + "\r\n" + script;
+
+                
+                CopyDirectory("template\\" + cmbType.Text, root, true);
+                File.WriteAllText(Path.Combine(root, "script.hbs"), script);
+                Process.Start("explorer", "\"" + root + "\"");
+                Close();
+            }
+            catch (Exception ex) {
+                MessageBox.Show("轰炸机生成失败，原因："+ex.Message, "生成失败");
+            }
         }
+
+
+
 
         private static bool CopyDirectory(string SourcePath, string DestinationPath, bool overwriteexisting)
         {
